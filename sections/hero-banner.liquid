@@ -57,8 +57,10 @@
     {%- for block in section.blocks -%}
       {%- case block.type -%}
         {%- when 'title' -%}
+          {%- assign bannerTitle = block.settings.text -%}
+
           <{{ block.settings.element }} class="hero-banner__title">
-            {{- block.settings.text | newline_to_br -}}
+            {{- bannerTitle | newline_to_br -}}
           </{{ block.settings.element }}>
         {%- when 'button' -%}
         <div class="hero-banner__btn-wrapper">
@@ -71,9 +73,9 @@
   </div>
 
   <div class="hero-banner__images{% unless section.settings.mobile_image %} hero-banner__images--only-desktop{% endunless %}">
-    {% render 'lazy-img', class: 'hero-banner__desktop-image', img: section.settings.desktop_image %}
+    {% render 'lazy-img', class: 'hero-banner__desktop-image', img: section.settings.desktop_image, alt: bannerTitle %}
     {% if section.settings.mobile_image %}
-      {% render 'lazy-img', class: 'hero-banner__mobile-image', img: section.settings.mobile_image %}
+      {% render 'lazy-img', class: 'hero-banner__mobile-image', img: section.settings.mobile_image, alt: bannerTitle %}
     {% endif %}
   </div>
 

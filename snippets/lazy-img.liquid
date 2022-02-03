@@ -12,7 +12,7 @@
   sizes="100vw"
   src="{{ img | img_url: '1500x' }}"
   loading="lazy"
-  alt="{{ img.alt | escape }}"
+  alt="{{ alt | escape }}"
   width="{{ img.width }}"
   height="{{ img.width | divided_by: img.aspect_ratio }}"
   {%- if class -%}class="{{- class -}}"{%- endif -%}

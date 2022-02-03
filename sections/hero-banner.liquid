@@ -1,0 +1,350 @@
+{%- if section.settings.desktop_image and section.blocks.size > 0 -%}
+  {{ 'section-hero-banner.css' | asset_url | stylesheet_tag }}
+
+  {%- style -%}
+    #shopify-section-{{ section.id }} .hero-banner__content {
+      align-content: {{ section.settings.desktop_vertical_position }};
+      justify-content: {{ section.settings.desktop_horizontal_position }};
+      text-align: {{ section.settings.desktop_alignment }};
+    }
+
+    #shopify-section-{{ section.id }} .hero-banner__desktop-image {
+      {%- case section.settings.desktop_height -%}
+        {%- when 'image' -%}
+          height: auto;
+          width: 100%;
+        {%- when 'screen' -%}
+          height: 100vh;
+          width: max-content;
+      {%- endcase -%}
+    }
+
+    #shopify-section-{{ section.id }} .hero-banner__mobile-image {
+      {%- case section.settings.mobile_height -%}
+        {%- when 'image' -%}
+          height: auto;
+          width: 100%;
+        {%- when 'screen' -%}
+          height: 100vh;
+          width: max-content;
+      {%- endcase -%}
+    }
+
+    {%- unless section.settings.desktop_arrow_enable -%}
+      @media screen and (min-width: 769px) {
+        #shopify-section-{{ section.id }} .hero-banner__arrow {
+          display: none;
+        }
+      }
+    {%- endunless -%}
+
+    @media screen and (max-width: 768px) {
+      #shopify-section-{{ section.id -}} .hero-banner__content {
+        align-content: {{ section.settings.mobile_vertical_position }};
+        justify-content: {{ section.settings.mobile_horizontal_position }};
+        text-align: {{ section.settings.mobile_alignment }};
+      }
+
+      {%- unless section.settings.mobile_arrow_enable -%}
+        #shopify-section-{{ section.id }} .hero-banner__arrow {
+          display: none;
+        }
+      {%- endunless -%}
+    }
+  {%- endstyle -%}
+
+  <div class="hero-banner__content">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'title' -%}
+          <{{ block.settings.element }} class="hero-banner__title">
+            {{- block.settings.text | newline_to_br -}}
+          </{{ block.settings.element }}>
+        {%- when 'button' -%}
+        <div class="hero-banner__btn-wrapper">
+          <a href="{{- block.settings.url -}}" class="btn"{% if block.settings.new_tab_enable %} target="_blank"{% endif %}>
+            {{- block.settings.text -}}
+          </a>
+        </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+
+  <div class="hero-banner__images{% unless section.settings.mobile_image %} hero-banner__images--only-desktop{% endunless %}">
+    {% render 'lazy-img', class: 'hero-banner__desktop-image', img: section.settings.desktop_image %}
+    {% if section.settings.mobile_image %}
+      {% render 'lazy-img', class: 'hero-banner__mobile-image', img: section.settings.mobile_image %}
+    {% endif %}
+  </div>
+
+  <div class="hero-banner__arrow">
+    {% render 'icon-arrow-in-circle' %}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Hero banner",
+  "tag": "section",
+  "class": "hero-banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Desktop layout"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "desktop_height",
+      "label": "Height",
+      "options": [
+        {
+          "value": "image",
+          "label": "Based on image size"
+        },
+        {
+          "value": "screen",
+          "label": "Based on screen size"
+        }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "select",
+      "id": "desktop_horizontal_position",
+      "label": "Horizontal content position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "desktop_vertical_position",
+      "label": "Horizontal content position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Middle"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "desktop_alignment",
+      "label": "Content alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "desktop_arrow_enable",
+      "label": "Show bottom arrow",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "mobile_height",
+      "label": "Height",
+      "options": [
+        {
+          "value": "image",
+          "label": "Based on image size"
+        },
+        {
+          "value": "screen",
+          "label": "Based on screen size"
+        }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "select",
+      "id": "mobile_horizontal_position",
+      "label": "Horizontal content position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "select",
+      "id": "mobile_vertical_position",
+      "label": "Horizontal content position",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "middle",
+          "label": "Middle"
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom"
+        }
+      ],
+      "default": "middle"
+    },
+    {
+      "type": "select",
+      "id": "mobile_alignment",
+      "label": "Content alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_arrow_enable",
+      "label": "Show bottom arrow",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Karhu \nsummer camp"
+        },
+        {
+          "type": "select",
+          "id": "element",
+          "label": "HTML element",
+          "options": [
+            {
+              "value": "h1",
+              "label": "H1"
+            },
+            {
+              "value": "h2",
+              "label": "H2"
+            },
+            {
+              "value": "h3",
+              "label": "H3"
+            },
+            {
+              "value": "h4",
+              "label": "H4"
+            },
+            {
+              "value": "h5",
+              "label": "H5"
+            },
+            {
+              "value": "h6",
+              "label": "H6"
+            },
+            {
+              "value": "p",
+              "label": "P"
+            }
+          ],
+          "default": "h1"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Shop Collection"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Url"
+        },
+        {
+          "type": "checkbox",
+          "id": "new_tab_enable",
+          "label": "Open the link in a new tab",
+          "default": false
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

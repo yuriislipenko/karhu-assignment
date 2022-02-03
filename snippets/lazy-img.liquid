@@ -1,0 +1,19 @@
+<img
+  srcset="{%- if img.width >= 375 -%}{{ img | img_url: '375x' }} 375w,{%- endif -%}
+    {%- if img.width >= 550 -%}{{ img | img_url: '550x' }} 550w,{%- endif -%}
+    {%- if img.width >= 750 -%}{{ img | img_url: '750x' }} 750w,{%- endif -%}
+    {%- if img.width >= 1100 -%}{{ img | img_url: '1100x' }} 1100w,{%- endif -%}
+    {%- if img.width >= 1500 -%}{{ img | img_url: '1500x' }} 1500w,{%- endif -%}
+    {%- if img.width >= 1780 -%}{{ img | img_url: '1780x' }} 1780w,{%- endif -%}
+    {%- if img.width >= 2000 -%}{{ img | img_url: '2000x' }} 2000w,{%- endif -%}
+    {%- if img.width >= 3000 -%}{{ img | img_url: '3000x' }} 3000w,{%- endif -%}
+    {%- if img.width >= 3840 -%}{{ img | img_url: '3840x' }} 3840w,{%- endif -%}
+    {{ img | img_url: 'master' }} {{ img.width }}w"
+  sizes="100vw"
+  src="{{ img | img_url: '1500x' }}"
+  loading="lazy"
+  alt="{{ img.alt | escape }}"
+  width="{{ img.width }}"
+  height="{{ img.width | divided_by: img.aspect_ratio }}"
+  {%- if class -%}class="{{- class -}}"{%- endif -%}
+>

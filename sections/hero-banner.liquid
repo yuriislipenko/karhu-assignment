@@ -1,5 +1,5 @@
 {%- if section.settings.desktop_image and section.blocks.size > 0 -%}
-  {{ 'section-hero-banner.css' | asset_url | stylesheet_tag }}
+  {{ 'section-hero-banner.min.css' | asset_url | stylesheet_tag }}
 
   {%- style -%}
     #shopify-section-{{ section.id }} .hero-banner__content {
@@ -83,7 +83,7 @@
     {% render 'icon-arrow-to-bottom' %}
   </div>
 
-  <script src="{{ 'section-hero-banner.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'section-hero-banner.min.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
 
 {% schema %}
@@ -348,6 +348,11 @@
           "default": false
         }
       ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero banner"
     }
   ]
 }

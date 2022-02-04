@@ -1,69 +1,58 @@
 .hero-banner {
   position: relative;
 }
+
 .hero-banner .hero-banner__content {
   display: grid;
   grid-auto-rows: max-content;
-  grid-gap: 36px;
+  grid-gap: 2.57143rem;
   height: 100%;
-  padding: 101px 50px 108px 50px;
+  padding: 7.21429rem 3.57143rem 7.71429rem 3.57143rem;
   position: absolute;
   width: 100%;
 }
-@media screen and (max-width: 768px) {
-  .hero-banner .hero-banner__content {
-    grid-gap: 28px;
-    padding: 138px 20px 88px 20px;
-  }
-}
+
 .hero-banner .hero-banner__content .hero-banner__title {
   color: #fff;
-  font-size: 150px;
-  line-height: 0.87;
   text-transform: uppercase;
-  margin: 0;
 }
-@media screen and (max-width: 992px) {
-  .hero-banner .hero-banner__content .hero-banner__title {
-    font-size: 100px;
-  }
-}
-@media screen and (max-width: 768px) {
-  .hero-banner .hero-banner__content .hero-banner__title {
-    font-size: 60px;
-    line-height: 1;
-  }
-}
+
 .hero-banner .hero-banner__images {
   display: flex;
   justify-content: center;
   width: 100%;
 }
-@media screen and (max-width: 768px) {
-  .hero-banner .hero-banner__images.hero-banner__images--only-desktop .hero-banner__desktop-image {
-    display: block;
-  }
-}
-@media screen and (max-width: 768px) {
-  .hero-banner .hero-banner__images .hero-banner__desktop-image {
-    display: none;
-  }
-}
-@media screen and (min-width: 769px) {
-  .hero-banner .hero-banner__images .hero-banner__mobile-image {
-    display: none;
-  }
-}
+
 .hero-banner .hero-banner__arrow {
-  bottom: 30px;
+  bottom: 2.14286rem;
   cursor: pointer;
   display: flex;
   left: 50%;
   position: absolute;
   transform: translateX(-50%);
 }
+
 @media screen and (max-width: 768px) {
+  .hero-banner .hero-banner__content {
+    grid-gap: 2rem;
+    padding: 9.85714rem 1.42857rem 6.28571rem 1.42857rem;
+  }
+
+  .hero-banner .hero-banner__images.hero-banner__images--only-desktop .hero-banner__desktop-image {
+    display: block;
+  }
+
+  .hero-banner .hero-banner__images .hero-banner__desktop-image {
+    display: none;
+  }
+
   .hero-banner .hero-banner__arrow {
-    bottom: 20px;
+    bottom: 1.42857rem;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .hero-banner .hero-banner__images .hero-banner__mobile-image {
+    display: none;
   }
 }

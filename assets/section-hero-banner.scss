@@ -1,35 +1,29 @@
+@function rem($size) {
+  $result: $size / 14;
+
+  @return #{$result}rem;
+}
+
 .hero-banner {
   position: relative;
 
   .hero-banner__content {
     display: grid;
     grid-auto-rows: max-content;
-    grid-gap: 36px;
+    grid-gap: rem(36);
     height: 100%;
-    padding: 101px 50px 108px 50px;
+    padding: rem(101) rem(50) rem(108) rem(50);
     position: absolute;
     width: 100%;
 
     @media screen and (max-width: 768px) {
-      grid-gap: 28px;
-      padding: 138px 20px 88px 20px;
+      grid-gap: rem(28);
+      padding: rem(138) rem(20) rem(88) rem(20);
     }
 
     .hero-banner__title {
       color: #FFFFFF;
-      font-size: 150px;
-      line-height: 0.87;
       text-transform: uppercase;
-      margin: 0;
-
-      @media screen and (max-width: 992px) {
-        font-size: 100px;
-      }
-
-      @media screen and (max-width: 768px) {
-        font-size: 60px;
-        line-height: 1;
-      }
     }
   }
 
@@ -60,7 +54,7 @@
   }
 
   .hero-banner__arrow {
-    bottom: 30px;
+    bottom: rem(30);
     cursor: pointer;
     display: flex;
     left: 50%;
@@ -68,7 +62,7 @@
     transform: translateX(-50%);
 
     @media screen and (max-width: 768px) {
-      bottom: 20px;
+      bottom: rem(20);
     }
   }
 }

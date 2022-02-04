@@ -1,27 +1,28 @@
 .btn {
   background-color: transparent;
   border: 1px solid rgba(255, 255, 255, 0.6);
-  color: #FFFFFF;
+  color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-size: 16px;
+  font-size: 1.1428571429rem;
   font-weight: 400;
   line-height: 1.7;
-  padding: 12px 60px 17px 60px;
+  padding: 0.8571428571rem 4.2857142857rem 1.2142857143rem 4.2857142857rem;
   text-align: center;
-  transition: 0.2s;
+  transition-duration: 0.3s;
+  transition-property: background-color, color;
   text-decoration: none;
   width: max-content;
 }
 
-@media screen and (max-width: 768px) {
-  .btn {
-    padding: 12px 30px 17px 30px;
-  }
+.btn:hover {
+  background-color: #fff;
+  border: 1px solid #fff;
+  color: #000;
 }
 
-.btn:hover {
-  background-color: #FFFFFF;
-  border: 1px solid #FFFFFF;
-  color: #000000;
+@media screen and (max-width: 768px) {
+  .btn {
+    padding: 0.8571428571rem 2.1428571429rem 1.2142857143rem 2.1428571429rem;
+  }
 }

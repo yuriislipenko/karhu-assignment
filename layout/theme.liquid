@@ -58,6 +58,7 @@
         --font-heading-style: normal;
         --font-heading-weight: 700;
 
+        --font-size-body: calc(0.97vw);
         --font-body-scale: {{ settings.body_scale | divided_by: 100.0 }};
         --font-heading-scale: {{ settings.heading_scale | times: 1.0 | divided_by: settings.body_scale }};
 
@@ -160,6 +161,12 @@
         --variant-pills-shadow-blur-radius: {{ settings.variant_pills_shadow_blur }}px;
       }
 
+      @media all and (max-width: 768px) {
+        :root {
+          --font-size-body: 14px;
+        }
+      }
+
       *,
       *::before,
       *::after {
@@ -168,7 +175,7 @@
 
       html {
         box-sizing: border-box;
-        font-size: calc(var(--font-body-scale) * 62.5%);
+        font-size: calc(var(--font-body-scale) * var(--font-size-body));
         height: 100%;
       }
 
@@ -194,7 +201,7 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
-    {{ 'common.css' | asset_url | stylesheet_tag }}
+    {{ 'common.min.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>

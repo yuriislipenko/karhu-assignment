@@ -1,0 +1,32 @@
+@function rem($size) {
+  $result: $size / 14;
+
+  @return #{$result}rem;
+}
+
+.btn {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: rem(16);
+  font-weight: 400;
+  line-height: 1.7;
+  padding: rem(12) rem(60) rem(17) rem(60);
+  text-align: center;
+  transition-duration: 0.3s;
+  transition-property: background-color, color;
+  text-decoration: none;
+  width: max-content;
+
+  @media screen and (max-width: 768px) {
+    padding: rem(12) rem(30) rem(17) rem(30);
+  }
+}
+
+.btn:hover {
+  background-color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  color: #000000;
+}

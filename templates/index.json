@@ -1,10 +1,101 @@
 {
   "sections": {
     "hero-banner": {
-      "type": "hero-banner"
+      "type": "hero-banner",
+      "blocks": {
+        "765f47c4-5880-4133-bb75-cca289e73f5d": {
+          "type": "title",
+          "settings": {
+            "text": "Karhu \nsummer camp",
+            "element": "h1"
+          }
+        },
+        "a250292c-de4c-421f-99a4-eb52ebb0916d": {
+          "type": "button",
+          "settings": {
+            "text": "Shop Collection",
+            "url": "shopify:\/\/collections",
+            "new_tab_enable": true
+          }
+        }
+      },
+      "block_order": [
+        "765f47c4-5880-4133-bb75-cca289e73f5d",
+        "a250292c-de4c-421f-99a4-eb52ebb0916d"
+      ],
+      "settings": {
+        "desktop_image": "shopify:\/\/shop_images\/hero-banner-image.png",
+        "desktop_height": "image",
+        "desktop_horizontal_position": "center",
+        "desktop_vertical_position": "center",
+        "desktop_alignment": "center",
+        "desktop_arrow_enable": true,
+        "mobile_image": "shopify:\/\/shop_images\/hero-banner-image-mobile.png",
+        "mobile_height": "image",
+        "mobile_horizontal_position": "center",
+        "mobile_vertical_position": "middle",
+        "mobile_alignment": "center",
+        "mobile_arrow_enable": false
+      }
+    },
+    "collections-slider": {
+      "type": "collections-slider",
+      "blocks": {
+        "65137144-1008-4c31-8d74-025d38942aa1": {
+          "type": "collection",
+          "settings": {
+            "collection": "men",
+            "title": "",
+            "btn_text": "Shop Now"
+          }
+        },
+        "c1c504a1-c5c8-4d4f-bf7b-a77b95b721a3": {
+          "type": "collection",
+          "settings": {
+            "collection": "women",
+            "title": "",
+            "btn_text": "Shop Now"
+          }
+        },
+        "cec9525b-0b04-4738-8ec2-04f45d480a53": {
+          "type": "collection",
+          "settings": {
+            "collection": "kids",
+            "title": "",
+            "btn_text": "Shop Now"
+          }
+        },
+        "936bfa2b-a264-4e02-8889-56988733e585": {
+          "type": "collection",
+          "settings": {
+            "collection": "kids",
+            "title": "",
+            "btn_text": "Shop Now"
+          }
+        }
+      },
+      "block_order": [
+        "65137144-1008-4c31-8d74-025d38942aa1",
+        "c1c504a1-c5c8-4d4f-bf7b-a77b95b721a3",
+        "cec9525b-0b04-4738-8ec2-04f45d480a53",
+        "936bfa2b-a264-4e02-8889-56988733e585"
+      ],
+      "settings": {
+        "section_title": "",
+        "title_element": "h3",
+        "element": "h4",
+        "new_tab_enable": false,
+        "desktop_item_width": 360,
+        "desktop_item_height": 500,
+        "desktop_item_gap": 60,
+        "mobile_item_width": 250,
+        "mobile_item_height": 350,
+        "mobile_item_gap": 16
+      }
     }
   },
   "order": [
-    "hero-banner"
+    "hero-banner",
+    "collections-slider"
   ]
 }

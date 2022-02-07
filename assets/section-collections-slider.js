@@ -1,4 +1,16 @@
-(function () {
+if ('collections-slider' in Shopify.theme.sections.registered) {
+  const sections = document.querySelectorAll('.collections-slider');
+
+  sections.forEach((section, index) => {
+    if (index !== 0) {
+      const linkTag = section.querySelector('link');
+      const scriptTag = section.querySelector('script');
+
+      linkTag.remove();
+      scriptTag.remove();
+    }
+  });
+} else {
   const selectors = {
     sliderContainer: '.collections-slider__wrapper',
     sliderItem: '.collections-slider__item',
@@ -7,21 +19,7 @@
     hiddenButton: 'collections-slider__arrow--hidden'
   };
 
-  const sliderContainer = document.querySelector(selectors.sliderContainer),
-        buttonToLeft = document.querySelector(selectors.buttonToLeft),
-        buttonToRight = document.querySelector(selectors.buttonToRight);
-
-  buttonToLeft?.addEventListener('click', event => {
-    event.preventDefault();
-    scrollToLeft();
-  });
-
-  buttonToRight?.addEventListener('click', event => {
-    event.preventDefault();
-    scrollToRight();
-  });
-
-  function scrollToLeft() {
+  function scrollToLeft(selectors, sliderContainer, buttonToLeft, buttonToRight) {
     let itemGap = +sliderContainer.dataset.sliderItemGap,
         itemWidth = sliderContainer.querySelector(selectors.sliderItem).clientWidth + itemGap,
         slideScrollPosition = sliderContainer.scrollLeft - itemWidth;
@@ -37,7 +35,7 @@
     }
   };
 
-  function scrollToRight() {
+  function scrollToRight(selectors, sliderContainer, buttonToLeft, buttonToRight) {
     let itemGap = +sliderContainer.dataset.sliderItemGap,
         itemWidth = sliderContainer.querySelector(selectors.sliderItem).clientWidth + itemGap,
         slideScrollPosition = sliderContainer.scrollLeft + itemWidth;
@@ -52,4 +50,27 @@
       buttonToRight.classList.add(selectors.hiddenButton);
     }
   };
-}());
+
+  const load = () => {
+    const sliderContainers = document.querySelectorAll(selectors.sliderContainer);
+
+    sliderContainers.forEach(sliderContainer => {
+      let buttonToLeft = sliderContainer.querySelector(selectors.buttonToLeft),
+          buttonToRight = sliderContainer.querySelector(selectors.buttonToRight);
+
+      buttonToLeft?.addEventListener('click', event => {
+        event.preventDefault();
+        scrollToLeft(selectors, sliderContainer, buttonToLeft, buttonToRight);
+      });
+
+      buttonToRight?.addEventListener('click', event => {
+        event.preventDefault();
+        scrollToRight(selectors, sliderContainer, buttonToLeft, buttonToRight);
+      });
+    });
+  };
+
+  Shopify.theme.sections.register('collections-slider');
+
+  load();
+}

@@ -105,6 +105,11 @@
           opacity: 0;
           pointer-events: none;
         }
+
+        svg {
+          height: rem(48);
+          width: rem(48);
+        }
       }
     }
   }

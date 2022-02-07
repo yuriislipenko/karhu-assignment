@@ -32,6 +32,11 @@
   transform: translateX(-50%);
 }
 
+.hero-banner .hero-banner__arrow svg {
+  height: 3.4285714286rem;
+  width: 3.4285714286rem;
+}
+
 @media screen and (max-width: 768px) {
   .hero-banner .hero-banner__content {
     grid-gap: 2rem;

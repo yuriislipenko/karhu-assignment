@@ -64,5 +64,10 @@
     @media screen and (max-width: 768px) {
       bottom: rem(20);
     }
+
+    svg {
+      height: rem(48);
+      width: rem(48);
+    }
   }
 }

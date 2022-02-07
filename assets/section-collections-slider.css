@@ -88,6 +88,11 @@
   pointer-events: none;
 }
 
+.collections-slider .collections-slider__wrapper .collections-slider__slider-controls .collections-slider__arrow svg {
+  height: 3.4285714286rem;
+  width: 3.4285714286rem;
+}
+
 @media screen and (max-width: 768px) {
   .collections-slider .collections-slider__wrapper {
     overflow-x: scroll;
